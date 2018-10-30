@@ -31,8 +31,6 @@ public class UserResource {
     }
 
     //    Create user
-//    input details of user
-//    output created and return created uri
     @PostMapping("/users")
     public ResponseEntity<Object> createUser(@RequestBody User user) {
         User savedUser = service.save(user);
@@ -45,6 +43,16 @@ public class UserResource {
                 .toUri();
 
         return ResponseEntity.created(location).build();
+    }
+
+
+    //    delete user
+    @DeleteMapping("/users/{id}")
+    public void deleteUser(@PathVariable int id) {
+        User user = service.deleteById(id);
+        if (user == null) {
+            throw new UserNotFoundException("id-" + id);
+        }
     }
 
 }
