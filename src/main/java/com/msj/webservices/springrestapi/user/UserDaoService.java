@@ -11,6 +11,7 @@ import java.util.List;
 public class UserDaoService {
 
     private static List<User> users = new ArrayList<>();
+
     private static int usersCount = 3;
 
     static {
